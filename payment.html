@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Ticket Payment</title>
+  <style>
+    form {
+      margin: 0 auto;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .success-message {
+      color: #4CAF50;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+    <form action ="ONLINE BUS TICKET BOOKING.HTML" method="POST">
+    <h2>Payment Details</h2>
+    
+    <label for="mpesa_number">M-Pesa Number:</label>
+    <input type="text" id="mpesa_number" name="mpesa_number" maxlength="10" required>
+    
+    <label for="mpesa_pin">M-Pesa PIN:</label>
+    <input type="password" id="mpesa_pin" name="mpesa_pin" maxlength="4" required>
+    
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" min="0" step="100" required>
+    
+    <input type="submit" value="Pay Now">
+    
+    <p class="payment_sucessful" id="payment_sucessful" style="display: none;">Payment successful!</p>
+  </form>
+
+  <script>
+    function validateForm() {
+      var mpesaNumber = document.getElementById("mpesa_number").value;
+      var mpesaPin = document.getElementById("mpesa_pin").value;
+
+      if (mpesaNumber.length !== 10 || isNaN(mpesaNumber)) {
+        alert("M-Pesa number must be 10 digits and contain only numbers.");
+        return false;
+      }
+
+      if (mpesaPin.length !== 4 || isNaN(mpesaPin)) {
+        alert("M-Pesa PIN must be 4 digits and contain only numbers.");
+        return false;
+      }
+
+      var successMessage = document.getElementById("success-message");
+      successMessage.style.display = "block";
+
+      return true;
+    }
+  </script>
+</body>
+</html>
+
+ 
