@@ -10,12 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Database connection details
     $servername = "localhost";
-    $dbUsername = "your_username";
-    $dbPassword = "your_password";
-    $dbname = "your_database_name";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbname = "online ticket booking";
 
     // Create a database connection
-    $conn = new mysqli($servername, $dbUsername, $dbPassword, $user);
+    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
 
     // Check the connection
     if ($conn->connect_error) {
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Check if the username is already taken
-    $checkUsernameQuery = "SELECT * FROM users WHERE username = '$username'";
+    $checkUsernameQuery = "SELECT * FROM user WHERE username = '$username'";
     $result = $conn->query($checkUsernameQuery);
     if ($result->num_rows > 0) {
         $errorMessage = "Username is already taken. Please choose a different username.";
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Insert the user data into the database
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $insertUserQuery = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword')";
+        $insertUserQuery = "INSERT INTO user (username, password) VALUES ('$username', '$hashedPassword')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             // Registration successful, redirect to login page
