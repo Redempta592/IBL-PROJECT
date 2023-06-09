@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Ticket Booking</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#search-results {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Bus Ticket Booking</h1>
+  
+  <form action="contact.html" method="post">
+    <label for="from">From:</label>
+    <input type="text" id="from" name="from" required>
+    
+    <label for="to">To:</label>
+    <input type="text" id="to" name="to" required>
+    
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    
+    <label for="passengers">Passengers:</label>
+    <input type="number" id="passengers" name="passengers" min="1" max="30" required>
+
+    <label for="departure time">Departure time:</label>
+    <input type="number" id="departure time" name="departure time"required>
+    
+    <input type="submit" value="Search available Buses">
+  </form>
+  <form id="booking ticket Form">
+    <label for="buses">seat number:</label>
+    <input type="text" id="seat number" name="seat number" required><br>
+  
+    <label for="seats">number of seats to book:</label>
+    <input type="number" id=" number of seats" name="available seats" required><br>
+  
+    <input type="submit" value="Submit">
+  </form>
+  
+  <div id="resultContainer"></div>
+  
+  <script>
+  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+  
+    var destination = document.getElementById("destination").value;
+    var seats = document.getElementById("seats").value;
+  
+    // Perform any necessary processing or API calls here
+  
+    // Example: Display the results in the resultContainer div
+    var resultContainer = document.getElementById("resultContainer");
+    resultContainer.innerHTML = "<h3>Results</h3>" +
+      "<p>Destination: " + destination + "</p>" +
+      "<p>Number of Seats: " + seats + "</p>";
+  });
+  </script>
+  
+  
+  
+  <script>
+function displaySearchResults(results) {
+  const searchResultsContainer = document.getElementById('search-results');
+  searchResultsContainer.innerHTML = '';
+  if (results.length === 0) {
+    const noResultsMessage = document.createElement('p');
+    noResultsMessage.textContent = 'No available buses found.';
+    searchResultsContainer.appendChild(noResultsMessage);
+  } else {
+    const table = document.createElement('table');
+    const tableHeader = document.createElement('tr');
+    tableHeader.innerHTML = `
+      <th>Bus Number</th>
+      <th>Departure Time</th>
+      <th>Arrival Time</th>
+      <th>Price</th>
+    `;
+    table.appendChild(tableHeader);
+    results.forEach(result => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${result.busNumber}</td>
+        <td>${result.departure}</td>
+        <td>${result.arrival}</td>
+        <td>${result.price}</td>
+      `;
+      table.appendChild(row);
+    });
+    searchResultsContainer.appendChild(table);
+  }
+}
+displaySearchResults(searchResults);
+  </script>
+  </form>
+</body>
+</html>
