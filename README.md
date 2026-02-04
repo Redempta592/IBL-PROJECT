@@ -1,6 +1,16 @@
-STEPS FOR DEPLOYMENT
-FRONTEND-CONTAINS THE WEBPAGES; ONLINE BUS TICKET BOOKING.HTML, SIGNUP.HTML, BOOK TICKET.HTML, CONTACT.HTML AND PAYMENT.HTML.
-HTML WAS USED IN THE DEVELOPMENT OF THE WEB PAGE AND CSS WAS USED FOR STYLE AS AN INTERNAL CSS FILE IN THE BODY SECTION OF THE HTML CODE.
-JAVASCRIPT WAS USED IN SEVERAL WEBPAGES LIKE PAYMENT.HTML AND SIGNUP.HTML
-php was used in signup.php to store user credentials and to connect the signup page to the backend
-BACKEND-This is the database of the system and xampp was used to create the database.
+Ticket Booking System
+
+A web-based Ticket Booking System that allows users to browse events, select seats, and book tickets online. Built with a focus on usability, responsiveness, and secure transaction handling. 
+
+## Features
+- Browse and search for events
+- Select seats and book tickets in real-time
+- User authentication and management
+- Admin dashboard to manage events and bookings
+- Real-time seat availability tracking
+
+## Tech Stack
+- Frontend: HTML, CSS, JavaScript  
+- Backend:PHP  
+- Database:MySQL (via XAMPP)  
+- UI/UX: Wireframing and interface design
